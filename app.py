@@ -7,9 +7,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 app = Flask(__name__)
 # load the model from disk
-filename = 'C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/models/logistic_model.pkl'
+filename = 'models/logistic_model.pkl'
 model = pickle.load(open(filename, 'rb'))
-#model_load = joblib.load("./models/logistic_model.pkl")
 
 #reading reviews file
 reviews = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/reviews.csv')
