@@ -14,12 +14,12 @@ model = pickle.load(open(filename, 'rb'))
 reviews = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/reviews.csv')
 
 #reading user final rating
-user_final_rating = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/user_final_rating.csv')
+user_final_rating = pd.read_csv('data/user_final_rating.csv')
 user_final_rating.set_index("reviews_username_encoded",inplace=True)
 user_final_rating.T.index.name = 'name_encoded'
 
 #reading item final rating
-item_final_rating = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/item_final_rating.csv')
+item_final_rating = pd.read_csv('data/item_final_rating.csv')
 item_final_rating.set_index("reviews_username_encoded",inplace=True)
 item_final_rating.T.index.name = 'name_encoded'
 
