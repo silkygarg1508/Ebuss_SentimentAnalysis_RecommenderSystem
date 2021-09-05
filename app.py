@@ -11,7 +11,7 @@ filename = 'models/logistic_model.pkl'
 model = pickle.load(open(filename, 'rb'))
 
 #reading reviews file
-reviews = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/reviews.csv')
+reviews = pd.read_csv('data/reviews.csv')
 
 #reading user final rating
 user_final_rating = pd.read_csv('data/user_final_rating.csv')
