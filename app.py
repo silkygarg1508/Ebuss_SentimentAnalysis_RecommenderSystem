@@ -7,25 +7,26 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 app = Flask(__name__)
 # load the model from disk
-filename = 'models/logistic_model.pkl'
+filename = 'C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/models/logistic_model.pkl'
 model = pickle.load(open(filename, 'rb'))
+#model_load = joblib.load("./models/logistic_model.pkl")
 
 #reading reviews file
-reviews = pd.read_csv('data/reviews.csv')
+reviews = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/reviews.csv')
 
 #reading user final rating
-user_final_rating = pd.read_csv('data/user_final_rating.csv')
+user_final_rating = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/user_final_rating.csv')
 user_final_rating.set_index("reviews_username_encoded",inplace=True)
 user_final_rating.T.index.name = 'name_encoded'
 
 #reading item final rating
-item_final_rating = pd.read_csv('data/item_final_rating.csv')
+item_final_rating = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/item_final_rating.csv')
 item_final_rating.set_index("reviews_username_encoded",inplace=True)
 item_final_rating.T.index.name = 'name_encoded'
 
 def recommendation(user):
-	user_input = int(user)
-	top20_user = user_final_rating.loc[user_input].sort_values(ascending=False)[0:20]
+	#user_input = int(user_input)
+	top20_user = user_final_rating.loc[user].sort_values(ascending=False)[0:20]
 	top20_user = top20_user.to_frame()
 	top20_user.reset_index(inplace=True)
 	top20_user.columns = ['name_encoded','weigthed_rating']
@@ -38,7 +39,9 @@ def recommendation(user):
 	
 	return top20_user
 	
-def sentiment(user):
+def sentiment(user_input):
+	#Finding out user id corresponding to the username for further processing
+	user = reviews['reviews_username_encoded'].loc[reviews['reviews_username'] == user_input][0]
 	top20_user = recommendation(user)
 	top5_user = pd.merge(top20_user,reviews,left_on='name_encoded',right_on='name_encoded',how = 'left')
 	top5_user = top5_user[['name_x','reviews_combined']]
@@ -57,10 +60,10 @@ def sentiment(user):
 	top5_user = top5_user[0:5]
 	#Displaying top 5 items 
 	top5_user.reset_index(inplace=True)
-	string = ""
-	for i,item in enumerate(top5_user['name']):
-		string = string + str(i+1) + ") " + item + '\n'
-	return string
+	list_of_top5_products=[]
+	for item in top5_user['name']:
+		list_of_top5_products.append(item)
+	return list_of_top5_products
 	
 @app.route('/')
 def home():
@@ -71,7 +74,7 @@ def predict():
     if (request.method == 'POST'):
         user_input = request.form['Username']
         output = sentiment(user_input)
-        return render_template('index.html', prediction_text='Recommended Products {}'.format(output))
+        return render_template('index.html', prediction_text=output)
     else :
         return render_template('index.html')
 
