@@ -17,7 +17,7 @@
 
 <body>
  <div class="login">
-	<h1 style="text-align:center">Ebuss Recommendation System</h1>
+	<h1 style="text-align:center"><u>Ebuss Recommendation System</u></h1>
 
     <form align="center" action="{{ url_for('predict')}}"method="post">
     	<input type="text" style="text-align:center" name="Username" placeholder="Username" required="required" />
@@ -27,7 +27,14 @@
 
    <br>
    <br>
-     {{ prediction_text }}
+   <h3 style="color:rgb(0, 0, 0)"><u>Recommended Products</u></h3>
+   <ul class="list-group list-group-flush">
+   <ol>
+     {% for m in prediction_text %}
+			<li class="list-group-item" style="color:rgb(0, 179, 0)" align="left"><strong>{{m}}</strong></li>
+    {% endfor %}
+   </ol
+   </ul>
 
  </div>
 
