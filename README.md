@@ -6,7 +6,7 @@
 #### Using tfidf Vectorizer and hence it's pickle file for transformation
 
 #### Some test users present in the dataset
-#### joshua,rebecca,walker557
+joshua,rebecca,walker557
 
-#### Some randome users not present in the dataset
-#### silky
+#### Some random users not present in the dataset
+silky
