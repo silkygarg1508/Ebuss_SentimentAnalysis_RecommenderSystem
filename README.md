@@ -5,8 +5,8 @@
 #### 4) Since Logistic Regression has given best Recall score for both positive(0.88) and negative sentiment(0.80), hence we will use logistic model for doing sentiment analysis on top 20 recommendations
 #### 5) Using tfidf Vectorizer and hence it's pickle file for transformation
 
-#### Some test users present in the dataset
+#### 6) Some test users present in the dataset
 joshua,rebecca,walker557
 
-#### Some random users not present in the dataset
+#### 7) Some random users not present in the dataset
 silky
