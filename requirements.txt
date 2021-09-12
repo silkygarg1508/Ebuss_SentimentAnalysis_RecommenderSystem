@@ -11,4 +11,4 @@ matplotlib>=1.4.3
 pandas>=0.19
 nltk>=3.4.5
 xgboost==0.90
-
+sklearn==0.22.2.post1
