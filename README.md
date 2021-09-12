@@ -3,7 +3,7 @@
 #### 1) Added reviews.csv files which contains the cleaned data from sample30.csv and also the encoded columns which are to be used by recommendation engine
 #### 2) Added user_final_rating.csv which contains the ratings for all the users in the dataset after having found the user user correlation amongst all the users
 #### 3) selected user-user correlation as it gave less rmse(2.5) as compared to item-item based(3.5)
-#### 4) Since Logistic Regression has given best F1 score for both positive and negative sentiment, hence we will use logistic model for doing sentiment analysis on top 20 recommendations
+#### 4) We saw that positive sentiment has good score across all the models but  XGBoost is able to perform best amongst thm and also gives comapritively higher score for negative sentiments too. Also, the precision,recall,f1 all the scores are more balanced in XGBoost and hence we will use xgboost model for doing sentiment analysis on top 20 recommendations.
 #### 5) Using tfidf Vectorizer and hence it's pickle file for transformation
 
 #### 6) Some test users present in the dataset
