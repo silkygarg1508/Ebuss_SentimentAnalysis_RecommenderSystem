@@ -3,10 +3,9 @@ import numpy as np
 import pickle
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-import xgboost as xgb
 
 # load the model from disk
-filename = 'models/xgBoost_model.pkl'
+filename = 'models/lr_model.pkl'
 model = pickle.load(open(filename, 'rb'))
 
 #loading tfidf vectorizer pkl file
