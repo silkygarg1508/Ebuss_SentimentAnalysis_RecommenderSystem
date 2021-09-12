@@ -6,19 +6,19 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import xgboost as xgb
 
 # load the model from disk
-filename = 'C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/models/xgBoost_model.pkl'
+filename = 'models/xgBoost_model.pkl'
 model = pickle.load(open(filename, 'rb'))
 
 #loading tfidf vectorizer pkl file
-filename = 'C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/models/tfidfvectorizer.pkl'
+filename = 'models/tfidfvectorizer.pkl'
 tfidf = pickle.load(open(filename, 'rb'))
 
 #reading reviews file
-reviews = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/reviews.csv')
+reviews = pd.read_csv('data/reviews.csv')
 
 #reading user final rating which has the rating for all the users in the dataset after having found the user user correlation amongst all the users
 #selected user-user correlation as it gave less rmse as compared to item-item based
-user_final_rating = pd.read_csv('C:/Users/hp/Desktop/PGDML/CapstoneProject/Flask/data/user_final_rating.csv')
+user_final_rating = pd.read_csv('data/user_final_rating.csv')
 user_final_rating.set_index("reviews_username_encoded",inplace=True)
 user_final_rating.T.index.name = 'name_encoded'
 
