@@ -2,6 +2,7 @@ from flask import Flask, jsonify,  request, render_template
 import numpy as np
 import pickle
 import pandas as pd
+import xgboost as xgb
 from sklearn.feature_extraction.text import TfidfVectorizer
 from model import recommendation
 from model import sentiment
