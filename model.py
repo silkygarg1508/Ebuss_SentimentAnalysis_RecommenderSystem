@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # load the model from disk
-filename = 'models/lr_model.pkl'
+filename = 'models/logistic_model.pkl'
 model = pickle.load(open(filename, 'rb'))
 
 #loading tfidf vectorizer pkl file
